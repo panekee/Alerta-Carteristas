@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foro Caza Carteristas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #222;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        nav {
+            background-color: #444;
+            padding: 10px;
+            text-align: center;
+        }
+        nav a {
+            color: white;
+            margin: 0 15px;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .container {
+            display: flex;
+            max-width: 1000px;
+            margin: 20px auto;
+        }
+        .topics, .thread {
+            background-color: white;
+            padding: 20px;
+            margin: 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+        .topics {
+            width: 30%;
+        }
+        .topics ul {
+            list-style: none;
+            padding: 0;
+        }
+        .topics li {
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+        .topics li a {
+            text-decoration: none;
+            color: #333;
+        }
+        .thread {
+            width: 70%;
+        }
+        .post {
+            border-bottom: 1px solid #ddd;
+            padding: 10px 0;
+        }
+        .post:last-child {
+            border-bottom: none;
+        }
+        .post .author {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .post .content {
+            margin-left: 10px;
+        }
+        .new-post {
+            margin-top: 20px;
+        }
+        .new-post textarea {
+            width: 100%;
+            height: 80px;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            resize: vertical;
+        }
+        .new-post button {
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #222;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .new-post button:hover {
+            background-color: #555;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Foro Caza Carteristas</h1>
+        <div id="welcome"></div>
+    </header>
+    <nav>
+        <a href="#">Inicio</a>
+        <a href="#">Temas</a>
+        <a href="#">Mi Perfil</a>
+        <a href="#">Contacto</a>
+    </nav>
+    <div class="container">
+        <div class="topics">
+            <h2>Temas del Foro</h2>
+            <ul>
+                <li><a href="#">Prevención de robos en transporte público</a></li>
+                <li><a href="#">Historias y experiencias</a></li>
+                <li><a href="#">Alertas por zona</a></li>
+                <li><a href="#">Gadgets y herramientas útiles</a></li>
+                <li><a href="#">Noticias recientes sobre carteristas</a></li>
+            </ul>
+        </div>
+        <div class="thread">
+            <h2>Hilo de ejemplo</h2>
+            <div class="post">
+                <div class="author">Usuario123:</div>
+                <div class="content">Hoy vi a un carterista en el metro, cuidado con la línea 3.</div>
+            </div>
+            <div class="post">
+                <div class="author">CazaExpert:</div>
+                <div class="content">Gracias por la alerta. Siempre reviso mis pertenencias en esa zona.</div>
+            </div>
+            <div class="new-post">
+                <h3>Responder</h3>
+                <textarea placeholder="Escribe tu comentario aquí..."></textarea>
+                <button>Enviar</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function getCookie(name) {
+            const value = `; ${document.cookie}`;
+            const parts = value.split(`; ${name}=`);
+            if (parts.length === 2) return parts.pop().split(';').shift();
+            return null;
+        }
+
+        const username = getCookie("username");
+        if(username){
+            document.getElementById("welcome").innerText = "Bienvenido, " + username + "!";
+        } else {
+            document.getElementById("welcome").innerText = "Bienvenido al foro! Por favor regístrate o inicia sesión.";
+        }
+    </script>
+</body>
+</html>

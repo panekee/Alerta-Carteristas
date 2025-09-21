@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Foro Caza Carteristas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            height:100vh;
+            margin:0;
+        }
+        .container {
+            background:white;
+            padding:40px;
+            border-radius:10px;
+            box-shadow:0 0 15px rgba(0,0,0,0.2);
+            width:100%;
+            max-width:400px;
+        }
+        h2 { text-align:center; margin-bottom:30px; color:#222; }
+        label { display:block; margin-bottom:5px; font-weight:bold; color:#555; }
+        input { width:100%; padding:10px; margin-bottom:20px; border-radius:5px; border:1px solid #ccc; box-sizing:border-box; }
+        button { width:100%; padding:10px; background-color:#222; color:white; border:none; border-radius:5px; font-size:16px; cursor:pointer; }
+        button:hover { background-color:#555; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Registrarse</h2>
+        <form id="registerForm">
+            <label for="username">Username</label>
+            <input type="text" id="username" placeholder="Ingresa tu username" required>
+
+            <label for="email">Email</label>
+            <input type="email" id="email" placeholder="Ingresa tu correo" required>
+
+            <button type="submit">Registrarse</button>
+        </form>
+    </div>
+
+    <script>
+        // Función para crear cookies
+        function setCookie(name, value, days) {
+            const d = new Date();
+            d.setTime(d.getTime() + (days*24*60*60*1000));
+            const expires = "expires="+ d.toUTCString();
+            document.cookie = name + "=" + encodeURIComponent(value) + ";" + expires + ";path=/";
+        }
+
+        // Evento al enviar el formulario
+        document.getElementById("registerForm").addEventListener("submit", function(e){
+            e.preventDefault();
+
+            const username = document.getElementById("username").value.trim();
+            const email = document.getElementById("email").value.trim();
+
+            if(username === "" || email === ""){
+                alert("Por favor, completa todos los campos.");
+                return;
+            }
+
+            // Guardar cookies por 7 días
+            setCookie("username", username, 7);
+            setCookie("email", email, 7);
+
+            alert("Registro exitoso. Serás redirigido al foro.");
+            window.location.href = "main.html";
+        });
+    </script>
+</body>
+</html>
