@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro - Foro Caza Carteristas</title>
+    <title>Sign-Up - Foro Caza Carteristas</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -22,7 +22,16 @@
             width:100%;
             max-width:400px;
         }
-        h2 { text-align:center; margin-bottom:30px; color:#222; }
+        h2 { text-align:center; margin-bottom:10px; color:#222; }
+        .notice {
+            background:#ffcccc;
+            padding:15px;
+            margin-bottom:20px;
+            border-left:5px solid #ff0000;
+            border-radius:5px;
+            font-size:14px;
+            color:#333;
+        }
         label { display:block; margin-bottom:5px; font-weight:bold; color:#555; }
         input { width:100%; padding:10px; margin-bottom:20px; border-radius:5px; border:1px solid #ccc; box-sizing:border-box; }
         button { width:100%; padding:10px; background-color:#222; color:white; border:none; border-radius:5px; font-size:16px; cursor:pointer; }
@@ -32,6 +41,12 @@
 <body>
     <div class="container">
         <h2>Registrarse</h2>
+
+        <div class="notice">
+            <strong>ATENCIÓN:</strong> No tenemos base de datos donde guardar datos de login de momento. Actualmente usamos cookies para el registro. 
+            Siento si causa alguna molestia, muchas gracias por leer. <br><em>Att SPUFF</em>
+        </div>
+
         <form id="registerForm">
             <label for="username">Username</label>
             <input type="text" id="username" placeholder="Ingresa tu username" required>
@@ -44,7 +59,6 @@
     </div>
 
     <script>
-        // Función para crear cookies
         function setCookie(name, value, days) {
             const d = new Date();
             d.setTime(d.getTime() + (days*24*60*60*1000));
@@ -52,7 +66,6 @@
             document.cookie = name + "=" + encodeURIComponent(value) + ";" + expires + ";path=/";
         }
 
-        // Evento al enviar el formulario
         document.getElementById("registerForm").addEventListener("submit", function(e){
             e.preventDefault();
 
@@ -64,7 +77,6 @@
                 return;
             }
 
-            // Guardar cookies por 7 días
             setCookie("username", username, 7);
             setCookie("email", email, 7);
 
