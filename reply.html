@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responder - Foro Caza Carteristas</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f5f5f5;
+    }
+    header {
+      background-color: #222;
+      color: white;
+      padding: 15px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header h1 {
+      margin: 0;
+    }
+    nav button {
+      margin-left: 10px;
+      padding: 8px 15px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      background-color: #444;
+      color: white;
+    }
+    nav button:hover {
+      background-color: #666;
+    }
+    main {
+      max-width: 800px;
+      margin: 30px auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+      margin-top: 0;
+      color: #222;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    textarea {
+      width: 100%;
+      min-height: 150px;
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      margin-bottom: 20px;
+      font-size: 14px;
+      resize: vertical;
+    }
+    button {
+      padding: 10px 20px;
+      background-color: #222;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    button:hover {
+      background-color: #444;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Foro Caza Carteristas</h1>
+    <nav>
+      <button onclick="window.location.href='index.html'">Inicio</button>
+      <button onclick="window.location.href='login.html'">Login</button>
+      <button onclick="window.location.href='sign-up.html'">Registro</button>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Responder al Tema</h2>
+    <p><b>Tema:</b> Técnicas para identificar carteristas</p>
+
+    <form id="replyForm">
+      <label for="respuesta">Tu Respuesta:</label>
+      <textarea id="respuesta" name="respuesta" placeholder="Escribe tu mensaje aquí..." required></textarea>
+      <button type="submit">Publicar Respuesta</button>
+    </form>
+  </main>
+
+  <script>
+    document.getElementById("replyForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      alert("Tu respuesta ha sido publicada (ejemplo).");
+      window.location.href = "index.html"; // vuelve al foro
+    });
+  </script>
+</body>
+</html>
