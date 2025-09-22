@@ -1,103 +1,150 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Foro Caza Carteristas</title>
-<style>
-    body { font-family: Arial, sans-serif; margin:0; background-color:#f4f4f4; }
-    header { background-color: #222; color:white; padding:20px; text-align:center; }
-    nav { background-color: #444; padding:10px; text-align:center; }
-    nav a { color:white; margin:0 15px; text-decoration:none; font-weight:bold; }
-    .container { max-width:1000px; margin:20px auto; display:flex; }
-    .topics, .thread { background:white; padding:20px; margin:10px; border-radius:8px; box-shadow:0 0 5px rgba(0,0,0,0.1); }
-    .topics { width:30%; }
-    .thread { width:70%; }
-    /* Popup */
-    #popup {
-        display:none;
-        position:fixed;
-        top:0; left:0; width:100%; height:100%;
-        background: rgba(0,0,0,0.5);
-        justify-content:center;
-        align-items:center;
-    }
-    #popup-content {
-        background:white;
-        padding:30px;
-        border-radius:10px;
-        text-align:center;
-        max-width:400px;
-        box-shadow:0 0 10px rgba(0,0,0,0.3);
-    }
-    #popup-content button {
-        padding:10px 20px;
-        margin-top:15px;
-        border:none;
-        background:#222;
-        color:white;
-        border-radius:5px;
-        cursor:pointer;
-    }
-    #popup-content button:hover { background:#555; }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foro - Caza Carteristas</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f5f5f5;
+        }
+        header {
+            background-color: #222;
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        header h1 {
+            margin: 0;
+        }
+        nav button {
+            margin-left: 10px;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #444;
+            color: white;
+        }
+        nav button:hover {
+            background-color: #666;
+        }
+        main {
+            max-width: 900px;
+            margin: 30px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .forum-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .forum-header h2 {
+            margin: 0;
+        }
+        .forum-header button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            background-color: #222;
+            color: white;
+        }
+        .forum-header button:hover {
+            background-color: #444;
+        }
+        .topic {
+            border-bottom: 1px solid #ddd;
+            padding: 15px 0;
+        }
+        .topic:last-child {
+            border-bottom: none;
+        }
+        .topic h3 {
+            margin: 0 0 5px;
+        }
+        .topic p {
+            margin: 5px 0;
+            color: #555;
+        }
+        .topic button {
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #0073e6;
+            border: none;
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+        .topic button:hover {
+            background-color: #005bb5;
+        }
+        .pagination {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .pagination button {
+            margin: 0 5px;
+            padding: 8px 12px;
+            border: 1px solid #ccc;
+            background-color: white;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .pagination button:hover {
+            background-color: #eee;
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <h1>Foro Caza Carteristas</h1>
+        <nav>
+            <button onclick="window.location.href='index.html'">Inicio</button>
+            <button onclick="window.location.href='login.html'">Login</button>
+            <button onclick="window.location.href='sign-up.html'">Registro</button>
+        </nav>
+    </header>
 
-<header>
-    <h1>Foro Caza Carteristas</h1>
-</header>
-<nav>
-    <a href="#">Inicio</a>
-    <a href="#">Temas</a>
-    <a href="#">Mi Perfil</a>
-    <a href="#">Contacto</a>
-</nav>
-
-<div class="container">
-    <div class="topics">
-        <h2>Temas del Foro</h2>
-        <ul>
-            <li><a href="#">Prevención de robos en transporte público</a></li>
-            <li><a href="#">Historias y experiencias</a></li>
-            <li><a href="#">Alertas por zona</a></li>
-            <li><a href="#">Gadgets y herramientas útiles</a></li>
-            <li><a href="#">Noticias recientes sobre carteristas</a></li>
-        </ul>
-    </div>
-    <div class="thread">
-        <h2>Hilo de ejemplo</h2>
-        <div class="post">
-            <div class="author">Usuario123:</div>
-            <div class="content">Hoy vi a un carterista en el metro, cuidado con la línea 3.</div>
+    <main>
+        <div class="forum-header">
+            <h2>Temas Recientes</h2>
+            <button onclick="alert('Función de crear tema próximamente')">+ Crear Tema</button>
         </div>
-    </div>
-</div>
 
-<!-- Popup -->
-<div id="popup">
-    <div id="popup-content">
-        <h3>¿Quieres registrarte?</h3>
-        <p>Únete al foro para participar y recibir alertas personalizadas.</p>
-        <button onclick="window.location.href='sign-up.html'">Registrarme</button>
-    </div>
-</div>
+        <div class="topic">
+            <h3>[Discusión] Técnicas para identificar carteristas</h3>
+            <p>Iniciado por <b>AnaSeguridad</b> - 12 respuestas</p>
+            <button>Responder</button>
+        </div>
 
-<script>
-    // Mostrar popup solo si no hay cookie de username
-    function getCookie(name) {
-        const value = `; ${document.cookie}`;
-        const parts = value.split(`; ${name}=`);
-        if (parts.length === 2) return parts.pop().split(';').shift();
-        return null;
-    }
+        <div class="topic">
+            <h3>[Alerta] Zona peligrosa en el metro</h3>
+            <p>Iniciado por <b>CazaMetro</b> - 8 respuestas</p>
+            <button>Responder</button>
+        </div>
 
-    const username = getCookie("username");
-    if (!username) {
-        const popup = document.getElementById("popup");
-        popup.style.display = "flex";
-    }
-</script>
+        <div class="topic">
+            <h3>[Consejo] Cómo proteger tu mochila en aglomeraciones</h3>
+            <p>Iniciado por <b>AntiCartera</b> - 4 respuestas</p>
+            <button>Responder</button>
+        </div>
 
+        <div class="pagination">
+            <button>&laquo; Anterior</button>
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>Siguiente &raquo;</button>
+        </div>
+    </main>
 </body>
 </html>
